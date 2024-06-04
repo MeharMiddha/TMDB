@@ -84,7 +84,7 @@ function MovieCard({ movies, onPlayTrailer }) {
   document.title=movies.original_title;
   return (
     <div
-      className="flex flex-col gap-4 w-full mt-10 p-12 bg-slate-400 xl:flex-row xl:p-8 background-bottom-right "
+      className="flex flex-col gap-4 w-full  p-12 bg-slate-400 xl:flex-row xl:p-8 xl:mt-10 background-bottom-right "
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original/${movies?.backdrop_path})`,
       }}
