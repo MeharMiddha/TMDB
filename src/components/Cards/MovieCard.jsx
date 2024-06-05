@@ -99,7 +99,7 @@ function MovieCard({ movies, onPlayTrailer }) {
         <img
           className="w-[300px] min-w-[300px] h-[450px] overflow-hidden"
           src={`https://image.tmdb.org/t/p/w500${movies?.poster_path}`}
-          alt={movies.title}
+          alt={movies?.title}
         />
         {providers && (
           <div className="flex flex-row gap-2 justify-center items-center p-2 bg-[#022540]">
@@ -120,30 +120,30 @@ function MovieCard({ movies, onPlayTrailer }) {
       <div className="flex flex-col">
         <div className="flex flex-row gap-2">
           <p className="text-[30px] font-bold text-[#FFF]">
-            {movies.original_title}
+            {movies?.original_title}
           </p>
           <p className="text-[30px] text-[#FFF] font-light">
-            ({movies.release_date.slice(0, 4)})
+            ({movies?.release_date.slice(0, 4)})
           </p>
         </div>
         <div className="flex gap-2">
           <p className="text-[#FFF]">
-            {movies.release_date} (
-            {movies.production_companies[0].origin_country})
+            {movies?.release_date} (
+            {movies?.production_companies[0]?.origin_country})
           </p>
           <p className="text-[#FFF]">
-            {movies.genres.map((genre) => (
-              <span key={genre.id}>{genre.name} </span>
+            {movies?.genres.map((genre) => (
+              <span key={genre?.id}>{genre?.name} </span>
             ))}
           </p>
-          <p className="text-[#FFF]">{convertRuntime(movies.runtime)}</p>
+          <p className="text-[#FFF]">{convertRuntime(movies?.runtime)}</p>
         </div>
         <div className="flex gap-10">
           <div className="flex items-center gap-2 mt-4">
             <div className="w-14">
               <CircularProgressbar
-                value={Math.round(movies.vote_average * 10, 1)}
-                text={Math.round(movies.vote_average * 10, 1) + "%"}
+                value={Math.round(movies?.vote_average * 10, 1)}
+                text={Math.round(movies?.vote_average * 10, 1) + "%"}
                 styles={buildStyles({
                   textColor: "white",
                   pathColor:
