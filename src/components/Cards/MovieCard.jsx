@@ -129,7 +129,11 @@ function MovieCard({ movies, onPlayTrailer }) {
         <div className="flex gap-2">
           <p className="text-[#FFF]">
             {movies?.release_date} (
-            {movies?.production_companies[0]?.origin_country})
+              {(movies.production_companies &&
+              movies.production_companies[0] &&
+              movies.production_companies[0].origin_country) ||
+              "IN"}
+            )
           </p>
           <p className="text-[#FFF]">
             {movies?.genres.map((genre) => (
