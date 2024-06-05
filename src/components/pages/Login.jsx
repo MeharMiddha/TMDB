@@ -18,7 +18,7 @@ function Login() {
     <div>
       <div className="w-[90%] p-4 mx-auto xl:h-[68vh]">
         <div>
-          <p className="text-[20px] font-bold">Login to your account</p>
+          <p className="text-[20px] font-bold">Login to your TMDB account</p>
           <p className="font-light">
             In order to use the editing and rating capabilities of TMDB, as well
             as get personal recommendations you will need to login to your
