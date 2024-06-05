@@ -12,14 +12,16 @@ function Navbar() {
   const handleToggle = () => {
     setIsSearchActive(!isSearchActive);
   };
-  const { data,setData,setWatchlist,setFavourites } = useContext(UserContext);
-  const handleLogout = () =>{
-    setData({ username:"",password:"" });
+  const { data, setData, setWatchlist, setFavourites } =
+    useContext(UserContext);
+  const handleLogout = () => {
+    setData({ username: "", password: "" });
     setWatchlist([]);
     localStorage.removeItem("watchlist");
     setFavourites([]);
     localStorage.removeItem("favourites");
-  }
+  };
+  
   return (
     <div className="bg-[#022540] h-16 flex justify-around items-center ">
       <div className="flex gap-6 xl:gap-14">
@@ -30,18 +32,37 @@ function Navbar() {
             className="w-40 h-5"
           />
         </Link>
-        <Link to="/favourites">
-          <p className="text-[#FFF] cursor-pointer xl:block hidden">
-            Favourites
-          </p>
-          <FaHeart className="text-[#FFF] text-[20px] xl:hidden" />
-        </Link>
-        <Link to="/watchlist">
-          <FaBookmark className="text-[#FFF] text-[20px] xl:hidden" />
-          <p className="text-[#FFF] cursor-pointer xl:block hidden">
-            Watchlist
-          </p>
-        </Link>
+        {data.username === "" && data.password === "" ? (
+          <>
+            <Link to="/login" onClick={()=> alert("Login First!")}>
+              <p className="text-[#FFF] cursor-pointer xl:block hidden">
+                Favourites
+              </p>
+              <FaHeart className="text-[#FFF] text-[20px] xl:hidden" />
+            </Link>
+            <Link to="/login" onClick={()=> alert("Login First!")}>
+              <FaBookmark className="text-[#FFF] text-[20px] xl:hidden" />
+              <p className="text-[#FFF] cursor-pointer xl:block hidden">
+                Watchlist
+              </p>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/favourites">
+              <p className="text-[#FFF] cursor-pointer xl:block hidden">
+                Favourites
+              </p>
+              <FaHeart className="text-[#FFF] text-[20px] xl:hidden" />
+            </Link>
+            <Link to="/watchlist">
+              <FaBookmark className="text-[#FFF] text-[20px] xl:hidden" />
+              <p className="text-[#FFF] cursor-pointer xl:block hidden">
+                Watchlist
+              </p>
+            </Link>
+          </>
+        )}
       </div>
       <div className="flex gap-4 xl:gap-14">
         {!isSearchActive ? (
@@ -61,10 +82,7 @@ function Navbar() {
           </Link>
         ) : (
           <Link to="/">
-            <p
-              className="text-[#FFF] cursor-pointer"
-              onClick={handleLogout}
-            >
+            <p className="text-[#FFF] cursor-pointer" onClick={handleLogout}>
               Logout
             </p>
           </Link>

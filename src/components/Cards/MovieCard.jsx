@@ -55,6 +55,12 @@ function MovieCard({ movies, onPlayTrailer }) {
     return `${hours}h ${minutes}m`;
   };
 
+  const getPathColor = (vote) => {
+    if(vote<4.5) return "red";
+    if(vote<7) return "#CFD331";
+    return "green"
+  }
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -141,9 +147,7 @@ function MovieCard({ movies, onPlayTrailer }) {
                 styles={buildStyles({
                   textColor: "white",
                   pathColor:
-                    Math.round(movies.vote_average * 10, 1) < 50
-                      ? "#CFD331"
-                      : "green",
+                    getPathColor(movies.vote_average),
                   trailColor: "gray",
                   textSize: "28px",
                   backgroundColor: "#022540",

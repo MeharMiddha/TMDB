@@ -12,6 +12,7 @@ function TrendingMovies({ movies }) {
               name={item.title}
               date={item.release_date}
               imageUrl={item.poster_path}
+              vote_average={item.vote_average}
             />
           </Link>
         );
